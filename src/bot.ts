@@ -1,18 +1,30 @@
-import { ShardClient, ShardClientRunOptions } from "detritus-client";
-import { Database } from "./api";
-import * as Config from "../config.json";
-import { join } from "path";
-import { readdirSync } from "fs";
+import { ActivityTypes, PresenceStatuses } from "detritus-client/lib/constants";
+import { GatewayIntents } from "detritus-client-socket/lib/constants";
+import BelfastClient from "./client";
+import { TOKEN } from "../config.json";
 
-export default class BelfastClient extends ShardClient {
-    public config = Config;
-    public database = new Database();
-
-    public async launch(options?: ShardClientRunOptions): Promise<void> {
-        this.run(options);
+const client = new BelfastClient(TOKEN, {
+    gateway: {
+        compress: false,
+        intents: [GatewayIntents.GUILDS, GatewayIntents.GUILD_MESSAGES, GatewayIntents.GUILD_MEMBERS],
+        shardCount: 1,
+        autoReconnect: true,
+        presence: {
+            activity: {
+                name: "Me Being Rewrite",
+                type: ActivityTypes.WATCHING
+            },
+            status: PresenceStatuses.IDLE
+        }
+    },
+    cache: {
+        messages: {
+            limit: 100,
+            enabled: true,
+            expire: 60 * 60 * 1000
+        }
     }
+});
 
-    public launchDB(): void {
-        this.database.launch();
-    }
-}
+client.launch();
+client.launchDB();
