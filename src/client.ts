@@ -22,7 +22,7 @@ export default class BelfastClient extends ShardClient {
      public async launch(options?: ShardClientRunOptions): Promise<void> {
         this.run(options);
 
-        const commandPath: string = join(__dirname, "commands");
+        const commandPath: string = join(__dirname, "commands", "prefixed");
         
         readdirSync(commandPath).forEach((dir) => {
             const commands: string[] = readdirSync(`${commandPath}/${dir}`).filter((file) => file.endsWith(".ts"));
