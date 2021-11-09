@@ -1,7 +1,8 @@
-import { ShardClient, ShardClientRunOptions } from "detritus-client";
+import { GatewayClientEvents, ShardClient, ShardClientRunOptions } from "detritus-client";
 import { Database } from "./api";
 import { Command, Event } from "./interfaces";
 import * as Config from "../config.json";
+import { MessageReplyOptions } from "detritus-client/lib/structures";
 import { join } from "path";
 import { readdirSync } from "fs";
 import { Database as XenDatabase } from "xen.db";
@@ -43,5 +44,9 @@ export default class BelfastClient extends ShardClient {
 
     public launchDB(): void {
         this.db.launch();
+    }
+
+    public replyMessage(payload: GatewayClientEvents.MessageCreate, options: MessageReplyOptions) {
+        return payload.message.reply({ reference: true, allowedMentions: { repliedUser: false }, ...options });
     }
 }
