@@ -14,7 +14,7 @@ export interface Command {
     guildOnly?: boolean;
     adminOnly?: boolean;
     modOnly?: boolean;
-    permissions: string[];
-    permissionClient: string[];
+    permissions?: string[];
+    permissionClient?: string[];
     run: CommandRun
 }
