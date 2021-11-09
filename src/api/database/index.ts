@@ -6,5 +6,6 @@ export class Database extends QuickMongoDatabase {
         this.on("ready", () => {
             console.log("[DATABASE] - MongoDB Successfully Connected");
         });
+        this.connect(MONGODB_URI);
     }
 }
