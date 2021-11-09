@@ -1,11 +1,12 @@
 import { Database as QuickMongoDatabase } from "quickmongo";
 import { MONGODB_URI } from "../../../config.json";
 
-export class Database extends QuickMongoDatabase {
+export class Database {
+    public db = new QuickMongoDatabase(MONGODB_URI);
+
     public async launch() {
-        this.on("ready", () => {
+        this.db.on("ready", () => {
             console.log("[DATABASE] - MongoDB Successfully Connected");
         });
-        this.connect(MONGODB_URI);
     }
 }
