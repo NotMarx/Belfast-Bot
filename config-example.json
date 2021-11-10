@@ -1,5 +1,6 @@
 {
     "TOKEN": "",
     "PREFIX": "",
-    "MONGODB_URI": ""
+    "MONGODB_URI": "",
+    "ADMIN_ID": []
 }
