@@ -10,23 +10,23 @@ export const event: Event = {
             Logger.system("GUILD", `${payload.guild.name} (${payload.guild.id}) Has Connected And Now Available`);
 
             // Register slash commands
-            for (const command of client.prefixedCommands.values()) {
+            for (const command of client.interactionCommands.values()) {
                 client.rest.createApplicationGuildCommand(client.applicationId, payload.guild.id, {
                     name: command.name,
                     description: command.description,
                     ...command
-                });
+                }).catch(() => { });
             }
         } else {
             Logger.system("GUILD", `Joined Guild: ${payload.guild.name} (${payload.guild.id}) With ${payload.guild.memberCount} Members`);
 
             // Register slash commands
-            for (const command of client.prefixedCommands.values()) {
+            for (const command of client.interactionCommands.values()) {
                 client.rest.createApplicationGuildCommand(client.applicationId, payload.guild.id, {
                     name: command.name,
                     description: command.description,
                     ...command
-                });
+                }).catch(() => { });
             }
         }
     }
