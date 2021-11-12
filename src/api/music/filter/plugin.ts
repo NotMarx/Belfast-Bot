@@ -18,7 +18,7 @@ class Player extends Structure.get("Player") {
         distortion: false
     };
 
-    setNightcore(status = true) {
+    setNightcore(status = true): Promise<Player> {
         if (!status) {
             this.filters.nightcore = false
             this.filtersData.timescale = null
@@ -33,7 +33,7 @@ class Player extends Structure.get("Player") {
         return this.updateFilters()
     }
 
-    setDaycore(status = true) {
+    setDaycore(status = true): Promise<Player> {
         if (!status) {
             this.filters.daycore = false
             this.filtersData.timescale = null
@@ -44,7 +44,7 @@ class Player extends Structure.get("Player") {
         return this.updateFilters()
     }
 
-    setVaporwave(status = true) {
+    setVaporwave(status = true): Promise<Player> {
         if (!status) {
             this.filters.vaporwave = false
             this.filtersData.equalizer = [];
@@ -59,7 +59,7 @@ class Player extends Structure.get("Player") {
         return this.updateFilters()
     }
 
-    setPop(status = true) {
+    setPop(status = true): Promise<Player> {
         if (!status) {
             this.filters.pop = false
             this.filtersData.equalizer = [];
@@ -84,7 +84,7 @@ class Player extends Structure.get("Player") {
         ]
         return this.updateFilters();
     }
-    setSoft(status = true) {
+    setSoft(status = true): Promise<Player> {
         if (!status) {
             this.filters.soft = false
             this.filtersData.lowpass = [];
@@ -95,7 +95,7 @@ class Player extends Structure.get("Player") {
         return this.updateFilters();
     }
 
-    setTrebbleBass(status = true) {
+    setTrebbleBass(status = true): Promise<Player> {
         if (!status) {
             this.filters.trebblebass = false
             this.filtersData.equalizer = [];
@@ -121,7 +121,7 @@ class Player extends Structure.get("Player") {
         return this.updateFilters();
     }
 
-    setEightD(status = true) {
+    setEightD(status = true): Promise<Player> {
         if (!status) {
             this.filters.eightD = false
             this.filtersData.rotation = null;
@@ -132,7 +132,7 @@ class Player extends Structure.get("Player") {
         return this.updateFilters();
     }
 
-    setKaraoke(status = true) {
+    setKaraoke(status = true): Promise<Player> {
         if (!status) {
             this.filters.karaoke = false
             this.filtersData.karaoke = null;
@@ -148,7 +148,7 @@ class Player extends Structure.get("Player") {
         return this.updateFilters();
     }
 
-    setVibrato(status = true) {
+    setVibrato(status = true): Promise<Player> {
         if (!status) {
             this.filters.vibrato = false
             this.filtersData.vibrato = null;
@@ -159,7 +159,7 @@ class Player extends Structure.get("Player") {
         return this.updateFilters();
     }
 
-    setTremolo(status = true) {
+    setTremolo(status = true): Promise<Player> {
         if (!status) {
             this.filters.tremolo = false
             this.filtersData.tremolo = { frequency: 2.0, depth: 0.5 };
@@ -170,7 +170,7 @@ class Player extends Structure.get("Player") {
         return this.updateFilters();
     }
 
-    setEarrape(status = true) {
+    setEarrape(status = true): Promise<Player> {
         if (!status) {
             this.filters.earrape = false
             this.filtersData.equalizer = [];
@@ -183,7 +183,7 @@ class Player extends Structure.get("Player") {
         return this.updateFilters();
     }
 
-    setDistortion(status = true) {
+    setDistortion(status = true): Promise<Player> {
         if (!status) {
             this.filters.distortion = false
             this.filtersData.distortion = null
