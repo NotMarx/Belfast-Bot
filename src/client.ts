@@ -2,6 +2,8 @@ import { GatewayClientEvents, ShardClient, ShardClientRunOptions } from "detritu
 import { Database } from "./api";
 import { Command, Event, InteractionCommand } from "./interfaces";
 import * as Config from "../config.json";
+import { launchLavalinkNode } from "./api/music";
+import { Manager } from "erela.js";
 import { MessageReplyOptions } from "detritus-client/lib/structures";
 import { join } from "path";
 import { readdirSync } from "fs";
@@ -13,6 +15,7 @@ export default class BelfastClient extends ShardClient {
     public db = new Database();
     public events = new Map<string, Event>();
     public interactionCommands = new Map<string, InteractionCommand>();
+    public manager: Manager;
     public prefixedCommands = new Map<string, Command>();
 
     /**
@@ -54,8 +57,12 @@ export default class BelfastClient extends ShardClient {
         });
     }
 
-    public launchDB(): void {
-        this.db.launch();
+    public launchDB(): Promise<void> {
+        return this.db.launch();
+    }
+
+    public launchLavalink(): Promise<void> {
+        return launchLavalinkNode(this);
     }
 
     public replyMessage(payload: GatewayClientEvents.MessageCreate, options: MessageReplyOptions) {

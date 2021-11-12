@@ -28,3 +28,4 @@ const client = new BelfastClient(TOKEN, {
 
 client.launch();
 client.launchDB();
+client.launchLavalink();
