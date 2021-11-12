@@ -1,6 +1,6 @@
 # Belfast (Rewrite)
 
-Discord bot yuh
+A multipurpose Discord bot.
 
 # Open-Source Libraries Used:
 
