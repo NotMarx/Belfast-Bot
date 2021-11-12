@@ -16,6 +16,6 @@ Discord bot yuh
 | :---: | :---: |
 | Prefixed Commands | ✔ |
 | Database | ✔ |
-| Interaction Commands | ❌ |
-| Music API | ❌ |
+| Interaction Commands | ✔ |
+| Music API | ✔ |
 | Moderation | ❌ |
