@@ -27,6 +27,7 @@
     "chalk": "^4.1.2",
     "detritus-client": "^0.16.3",
     "erela.js": "^2.3.3",
+    "erela.js-spotify": "^1.2.0",
     "moment": "^2.29.1",
     "music-progress-bar": "^1.0.4",
     "os-utils": "0.0.14",
