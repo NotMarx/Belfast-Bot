@@ -14,7 +14,7 @@ export const event: Event = {
         let messageArray: string[] = message.content.split(" ");
         let args: string[] = messageArray.slice(1);
         let commandName: string = messageArray[0].slice(ClientConfig.PREFIX.length);
-        const command: Command = client.commands.get(commandName);
+        const command: Command = client.prefixedCommands.get(commandName);
 
         if (!command) return;
 
