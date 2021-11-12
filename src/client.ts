@@ -1,8 +1,7 @@
 import { GatewayClientEvents, ShardClient, ShardClientRunOptions } from "detritus-client";
-import { Database } from "./api";
+import { Database, launchLavalinkNode } from "./api";
 import { Command, Event, InteractionCommand } from "./interfaces";
 import * as Config from "../config.json";
-import { launchLavalinkNode } from "./api/music";
 import { Manager } from "erela.js";
 import { MessageReplyOptions } from "detritus-client/lib/structures";
 import { join } from "path";
