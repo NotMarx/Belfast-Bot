@@ -1,13 +1,12 @@
 import BelfastClient from "../client";
 import { GatewayClientEvents } from "detritus-client";
+import { RequestTypes } from "detritus-client-rest/lib";
 
 interface InteractionCommandRun {
     (client: BelfastClient, payload: GatewayClientEvents.InteractionCreate): Promise<any>;
 }
 
-export interface InteractionCommand {
-    name: string;
-    description?: string;
+export interface InteractionCommand extends RequestTypes.CreateApplicationCommand {
     category?: string;
     nsfwOnly?: boolean;
     guildOnly?: boolean;
