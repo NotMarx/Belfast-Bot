@@ -2,5 +2,12 @@
     "TOKEN": "",
     "PREFIX": "",
     "MONGODB_URI": "",
-    "ADMIN_ID": []
+    "ADMIN_ID": [],
+    "LAVALINK": {
+        "CLIENT_ID": "",
+        "CLIENT_SECRET": "",
+        "HOST": "",
+        "PASSWORD": "",
+        "IDENTIFIER": ""
+    }
 }
