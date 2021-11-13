@@ -30,7 +30,6 @@ export async function launchLavalinkNode(client: BelfastClient) {
             const guild = client.guilds.get(id);
             if (guild) {
                 client.gateway.send(payload.op, payload.d);
-                
             }
         }
     })
