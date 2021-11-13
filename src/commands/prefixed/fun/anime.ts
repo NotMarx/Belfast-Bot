@@ -27,6 +27,6 @@ export const command: Command = {
                 .setUrl(data.links.self)
 
             return client.replyMessage(payload, { embed: embed });
-        })
+        });
     }
 }
