@@ -1,6 +1,7 @@
 import { ClientEvents } from "detritus-client/lib/constants";
 import { Command, Event } from "../interfaces";
 import { GatewayClientEvents } from "detritus-client";
+import LevelXP from "../api/rank";
 import { Logger } from "../utils";
 import * as ClientConfig from "../../config.json";
 
@@ -10,6 +11,8 @@ export const event: Event = {
         const message = payload.message;
 
         if (message.author.bot || !message.guild || !message.content.startsWith(ClientConfig.PREFIX)) return;
+
+        LevelXP.addExp(client, payload.message);
 
         let messageArray: string[] = message.content.split(" ");
         let args: string[] = messageArray.slice(1);
