@@ -30,6 +30,14 @@ export const command: Command = {
                 player.connect();
             }
 
+            if (!songQuery) {
+                const embed = new Embed()
+                    .setDescription("Please provide a song query!")
+                    .setColor(0xE9E2E6)
+
+                return client.replyMessage(payload, { embed: embed });
+            }
+
             const player = client.manager.get(payload.message.guildId);
             let res;
 
