@@ -18,7 +18,18 @@ export const event: Event = {
 
         if (command) {
             Logger.command("COMMAND", `${interaction.member.tag} (${interaction.member.id}) Runs "${command.name}" In Guild: ${interaction.guild.name} (${interaction.guildId})`);
-            command.run(client, payload);
+           
+            switch (interaction.type) {
+                case 1: // Slash Commands
+                    command.run(client, payload);
+                    break;
+                case 2: // User Context Commands
+                    command.run(client, payload);
+                    break;
+                case 3: // Message Context Commands
+                    command.run(client, payload);
+                    break;
+            }
         }
     }
 }
