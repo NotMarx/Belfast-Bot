@@ -1,0 +1,30 @@
+---
+rules:
+    object-curly-spacing:
+    - 2
+    - always
+    keyword-spacing:
+    - 0
+    - after: true
+      overrides:
+        catch:
+          after: false
+        for:
+          after: false
+        if:
+          after: false
+        switch:
+          after: false
+        while:
+          after: false
+    indent:
+        - 2
+        - 4
+        - SwitchCase: 1
+          ignoreComments: false
+    quotes:
+        - 2
+        - double
+    semi:
+        - 2
+        - always
