@@ -1,7 +1,7 @@
 import { Plugin, Structure } from "erela.js";
 import FilterConstants from "./filterconstants";
 
-class Player extends Structure.get("Player") {
+export class Player extends Structure.get("Player") {
     filtersData = new FilterConstants();
     filters = {
         nightcore: false,
