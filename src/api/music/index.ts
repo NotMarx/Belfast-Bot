@@ -93,11 +93,11 @@ export async function launchLavalinkNode(client: BelfastClient) {
             color: 0xE9E2E6
         };
     
-        client.guilds.get(player.guild).channels.get(player.textChannel).createMessage({ embeds: [embed] });
+        client.channels.get(player.textChannel).createMessage({ embeds: [embed] });
     })
     
     .on("playerMove", (player, initChannel, newChannel) => {
-        player.voiceChannel = client.guilds.get(player.guild).channels.get(newChannel).id;
+        player.voiceChannel = client.channels.get(newChannel).id;
     })
     
     .on("queueEnd", (player) => {
@@ -112,7 +112,7 @@ export async function launchLavalinkNode(client: BelfastClient) {
             (client.channels.get(player.voiceChannel) as ChannelGuildVoice).leave();
         }
     
-        client.guilds.get(player.guild).channels.get(player.textChannel).createMessage({ embeds: [embed] });
+        client.channels.get(player.textChannel).createMessage({ embeds: [embed] });
     });
 
     client.on("raw", (packet) => {
