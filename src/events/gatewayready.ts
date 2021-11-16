@@ -9,3 +9,8 @@ export const event: Event = {
         client.manager.init(client.userId);
     }
 }
+
+// Misc events
+process.on("unhandledRejection", (err: string) => {
+    Logger.error("ERROR", err);
+});
