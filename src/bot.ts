@@ -6,7 +6,7 @@ import { TOKEN } from "../config.json";
 const client = new BelfastClient(TOKEN, {
     gateway: {
         compress: false,
-        intents: [GatewayIntents.GUILDS, GatewayIntents.GUILD_MESSAGES, GatewayIntents.GUILD_MEMBERS, GatewayIntents.GUILD_VOICE_STATES],
+        intents: [GatewayIntents.GUILDS, GatewayIntents.GUILD_MESSAGES, GatewayIntents.GUILD_MEMBERS, GatewayIntents.GUILD_PRESENCES, GatewayIntents.GUILD_VOICE_STATES],
         shardCount: 1,
         autoReconnect: true,
         presence: {
@@ -17,6 +17,7 @@ const client = new BelfastClient(TOKEN, {
             status: PresenceStatuses.IDLE
         }
     },
+    imageFormat: "png",
     cache: {
         messages: {
             limit: 100,
