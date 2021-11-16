@@ -1,4 +1,5 @@
 import { Command } from "../../../interfaces";
+import { Embed } from "detritus-client/lib/utils";
 import { Player } from "../../../api/music/filter";
 import yargs from "yargs/yargs";
 
@@ -10,15 +11,49 @@ export const command: Command = {
         const effectFlag = await yargs(args.slice(0)).array(["effect"]).argv;
         const activeFlag = await yargs(args.slice(0)).boolean(["add", "remove"]).argv;
         const player = client.manager.players.get(payload.message.guildId) as Player;
+        let embed = new Embed()
+            .setColor(0xE9E2E6)
 
-        if (effectFlag.effect[0] === "nightcore") {
-            if (activeFlag.add) {
-                client.replyMessage(payload, { content: "Nightcore Activated!" });
-                player.setNightcore(true);
-            } else if (activeFlag.remove) {
-                client.replyMessage(payload, { content: "Nightcore Deactivated!" });
-                player.setNightcore(false);
-            }
+        switch (effectFlag.effect[0]) {
+            case "nightcore":
+                if (activeFlag.add) {
+                    embed.setDescription("Nightcore Activated!");
+
+                    client.replyMessage(payload, { embed: embed });
+                    player.setNightcore(true);
+                } else if (activeFlag.remove) {
+                    embed.setDescription("Nightcore Deactivated!");
+
+                    client.replyMessage(payload, { embed: embed });
+                    player.setNightcore(false);
+                }
+                break;
+            case "8d":
+                if (activeFlag.add) {
+                    embed.setDescription("8D Activated!");
+
+                    client.replyMessage(payload, { embed: embed });
+                    player.setEightD(true);
+                } else if (activeFlag.remove) {
+                    embed.setDescription("8D Deactivated!");
+
+                    client.replyMessage(payload, { embed: embed });
+                    player.setEightD(false);
+                }
+                break;
+            case "daycore":
+                if (activeFlag.add) {
+                    embed.setDescription("Daycore Activated!");
+
+                    client.replyMessage(payload, { embed: embed });
+                    player.setDaycore(true);
+                } else if (activeFlag.remove) {
+                    embed.setDescription("Daycore Deactivated!");
+
+                    client.replyMessage(payload, { embed: embed });
+                    player.setDaycore(false);
+                }
+                break;
         }
     }
 }
