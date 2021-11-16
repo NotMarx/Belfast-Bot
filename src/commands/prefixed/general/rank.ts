@@ -44,7 +44,7 @@ export const command: Command = {
             .setCurrentXP(remxp || 0)
             .setLevel(level || 0)
             .setOverlay("#000000", 1)
-            .setStatus("offline", false)
+            .setStatus(member.presence ? member.presence.status as "online" | "dnd" | "idle" | "streaming" : "offline", false)
             .setLevelColor("#E9E2E6")
             .setRequiredXP(levelXP || 100)
             .setProgressBar("#E9E2E6", "COLOR")
