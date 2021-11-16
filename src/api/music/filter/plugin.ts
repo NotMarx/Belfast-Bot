@@ -1,6 +1,5 @@
 import { Plugin, Structure } from "erela.js";
 import FilterConstants from "./filterconstants";
-
 export class Player extends Structure.get("Player") {
     filtersData = new FilterConstants();
     filters = {
