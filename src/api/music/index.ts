@@ -1,6 +1,6 @@
 import * as Config from "../../../config.json";
 import { Embed } from "detritus-client/lib/utils";
-import { Message, User } from "detritus-client/lib/structures";
+import { ChannelGuildVoice, Message, User } from "detritus-client/lib/structures";
 import { Manager } from "erela.js";
 import { ErelaFilters } from "./filter";
 import BelfastClient from "../../client";
@@ -101,10 +101,16 @@ export async function launchLavalinkNode(client: BelfastClient) {
     })
     
     .on("queueEnd", (player) => {
+        const guildPremium: boolean = client.database.fetch(`Database.${player.guild}.Premium`);
         const embed = {
             description: "The Queue Has Ended!",
             color: 0xE9E2E6
         };
+
+        // Auto disconnect if guild is non-premium
+        if (!guildPremium) {
+            (client.channels.get(player.voiceChannel) as ChannelGuildVoice).leave();
+        }
     
         client.guilds.get(player.guild).channels.get(player.textChannel).createMessage({ embeds: [embed] });
     });
