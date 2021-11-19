@@ -10,6 +10,10 @@ export const command: Command = {
     run: async (client, payload, args) => {
         const member = payload.message.guild.members.find((m) => m.id === args[0]) || payload.message.guild.members.find((m) => m.username === args.slice(0).join(" ")) || payload.message.member;
 
+        if (!member) {
+            return client.replyMessage(payload, { content: "No user found!" });
+        }
+
         if (member.bot) {
             return client.replyMessage(payload, { content: "Bots have no levels!" });
         }
@@ -26,7 +30,7 @@ export const command: Command = {
         }
 
         if (!userXP) {
-            return client.replyMessage(payload, { content: `**${member.tag}** is still unranked` });
+            return client.replyMessage(payload, { content: `**${member.tag}** is unranked` });
         }
 
         let arrayXP = [];
