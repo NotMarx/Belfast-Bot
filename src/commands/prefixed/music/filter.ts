@@ -54,6 +54,24 @@ export const command: Command = {
                     player.setDaycore(false);
                 }
                 break;
+            case "distortion":
+                if (activeFlag.add) {
+                    embed.setDescription("Distortion Activated!");
+
+                    client.replyMessage(payload, { embed: embed });
+                    player.setDistortion(true);
+                } else if (activeFlag.remove) {
+                    embed.setDescription("Distortion Deactivated!");
+
+                    client.replyMessage(payload, { embed: embed });
+                    player.setDistortion(false);
+                }
+                break;
+            default:
+                embed.setDescription("No filter effect found!");
+
+                client.replyMessage(payload, { embed: embed });
+                break;
         }
     }
 }
