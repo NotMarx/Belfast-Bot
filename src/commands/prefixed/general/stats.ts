@@ -9,6 +9,7 @@ export const command: Command = {
             .setTitle(`${client.user.username}'s Stats`)
             .setColor(0x7289DA)
             .addField("Shard ID", `${payload.message.guild.shardId}/${client.shardCount - 1}`)
+            .addField("Guilds", `${client.guilds.size}`)
 
         return client.replyMessage(payload, { embed: embed });
     }
