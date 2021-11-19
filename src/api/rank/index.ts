@@ -1,6 +1,5 @@
 import BelfastClient from "../../client";
 import { Message } from "detritus-client/lib/structures"; 
-
 export default class LevelXP {
 
     /**
