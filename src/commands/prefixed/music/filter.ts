@@ -67,6 +67,18 @@ export const command: Command = {
                     player.setDistortion(false);
                 }
                 break;
+            case "karaoke":
+                if (activeFlag.add) {
+                    embed.setDescription("Karaoke Activated!");
+
+                    client.replyMessage(payload, { embed: embed });
+                    player.setKaraoke(true);
+                } else if (activeFlag.remove) {
+                    embed.setDescription("Karaoke Deactivated!");
+
+                    client.replyMessage(payload, { embed: embed });
+                    player.setKaraoke(false);
+                }
             default:
                 embed.setDescription("No filter effect found!");
 
