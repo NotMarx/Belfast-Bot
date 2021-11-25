@@ -79,6 +79,7 @@ export const command: Command = {
                     client.replyMessage(payload, { embed: embed });
                     player.setKaraoke(false);
                 }
+                break;
             default:
                 embed.setDescription("No filter effect found!");
 
