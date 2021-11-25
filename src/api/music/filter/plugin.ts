@@ -5,6 +5,7 @@ export class Player extends Structure.get("Player") {
     filters = {
         nightcore: false,
         daycore: false,
+        channelMix: false,
         vaporwave: false,
         pop: false,
         soft: false,
@@ -131,6 +132,22 @@ export class Player extends Structure.get("Player") {
         return this.updateFilters();
     }
 
+    setChannelMix(status = true): Promise<Player> {
+        if (!status) {
+            this.filters.channelMix = false
+            this.filtersData.channelMix = null;
+            return this.updateFilters();
+        }
+        this.filters.channelMix = true
+        this.filtersData.channelMix = {
+            leftToLeft: 1.0,
+            leftToRight: 0.0,
+            rightToLeft: 0.0,
+            rightToRight: 1.0
+        }
+        return this.updateFilters();
+    }
+
     setKaraoke(status = true): Promise<Player> {
         if (!status) {
             this.filters.karaoke = false
@@ -196,7 +213,7 @@ export class Player extends Structure.get("Player") {
     }
 
     async updateFilters(seek = true) {
-        const { volume, equalizer, karaoke, timescale, tremolo, vibrato, rotation, distortion } = this.filtersData;
+        const { volume, equalizer, karaoke, timescale, tremolo, vibrato, rotation, distortion, channelMix } = this.filtersData;
         await this.node.send({
             op: 'filters',
             guildId: this.guild,
@@ -207,7 +224,8 @@ export class Player extends Structure.get("Player") {
             tremolo,
             vibrato,
             rotation,
-            distortion
+            distortion, 
+            channelMix
         });
         if (!seek) return;
         return this;
@@ -221,6 +239,7 @@ export class Player extends Structure.get("Player") {
         this.filters = {
             nightcore: false,
             daycore: false,
+            channelMix: false,
             vaporwave: false,
             pop: false,
             soft: false,
