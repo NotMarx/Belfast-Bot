@@ -4,7 +4,7 @@
   "description": "Belfast Bot",
   "main": "./src/bot.ts",
   "scripts": {
-    "launch": "ts-node-dev --transpile-only --poll ./src/bot.ts"
+    "launch": "ts-node-dev ./src/bot.ts"
   },
   "keywords": [
     "typescript"
