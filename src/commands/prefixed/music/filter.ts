@@ -80,6 +80,19 @@ export const command: Command = {
                     player.setKaraoke(false);
                 }
                 break;
+            case "channelmix":
+                if (activeFlag.add) {
+                    embed.setDescription("Channel Mix Activated!");
+
+                    client.replyMessage(payload, { embed: embed });
+                    player.setChannelMix(true);
+                } else if (activeFlag.remove) {
+                    embed.setDescription("Channel Mix Deactivated!");
+
+                    client.replyMessage(payload, { embed: embed });
+                    player.setChannelMix(false);
+                }
+                break;
             default:
                 embed.setDescription("No filter effect found!");
 
