@@ -1,7 +1,6 @@
 import { Command } from "../../../interfaces";
 import LevelXP from "../../../api/rank";
 import { Rank } from "canvacord";
-import yargs from "yargs/yargs";
 
 export const command: Command = {
     name: "rank",
