@@ -27,6 +27,7 @@ const client = new BelfastClient(TOKEN, {
     }
 });
 
+// Launch everything 
 client.launch();
 client.launchDB();
 client.launchLavalink();
